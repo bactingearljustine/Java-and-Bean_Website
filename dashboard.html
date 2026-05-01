@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java & Beans — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-float" aria-hidden="true">
+  <span>☕</span><span>🍩</span><span>🥐</span>
+  <span>🍫</span><span>🧋</span><span>🍵</span>
+  <span>☕</span><span>🫖</span><span>🍩</span><span>🥐</span>
+</div>
+  <nav class="navbar">
+    <div class="logo"><span>☕</span> Java & Beans</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="cart.html">Cart <span class="cart-badge" id="cart-count">0</span></a>
+      <button class="logout-btn" id="logout-btn">Sign out</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="dashboard-hero">
+      <div class="hero-text">
+        <h1 id="welcome-text">Good morning!</h1>
+        <p>Life happens — coffee helps. What are you having today?</p>
+        <a href="menu.html" class="btn-secondary">Browse the Menu</a>
+      </div>
+      <div class="hero-art">☕</div>
+    </div>
+
+    <div class="quick-links">
+      <a href="menu.html" class="quick-card">
+        <span class="qc-icon">📋</span>
+        <div class="qc-title">Our Menu</div>
+        <div class="qc-desc">Espressos, lattes & more</div>
+      </a>
+      <a href="cart.html" class="quick-card">
+        <span class="qc-icon">🛒</span>
+        <div class="qc-title">Your Cart</div>
+        <div class="qc-desc">Review & checkout</div>
+      </a>
+      <div class="quick-card" style="cursor:default;">
+        <span class="qc-icon">⭐</span>
+        <div class="qc-title">Favorites</div>
+        <div class="qc-desc">Coming soon!</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

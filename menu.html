@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java & Beans — Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-float" aria-hidden="true">
+  <span>☕</span><span>🍩</span><span>🥐</span>
+  <span>🍫</span><span>🧋</span><span>🍵</span>
+  <span>☕</span><span>🫖</span><span>🍩</span><span>🥐</span>
+</div>
+  <nav class="navbar">
+    <div class="logo"><span>☕</span> Java & Beans</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Home</a>
+      <a href="menu.html" class="active">Menu</a>
+      <a href="cart.html">Cart <span class="cart-badge" id="cart-count">0</span></a>
+      <button class="logout-btn" id="logout-btn">Sign out</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <h1 class="page-heading">Our Coffee Menu</h1>
+    <p class="page-subheading">Handcrafted with love, served with warmth ☀️</p>
+    <div id="menu-list" class="menu-grid"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
