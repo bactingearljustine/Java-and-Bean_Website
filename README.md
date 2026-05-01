@@ -1,6 +1,6 @@
 # ☕ Java & Bean Café Website
 
-A Java Web Application demonstrated using an Ubuntu Server Virtual Machine (VirtualBox)
+A Java Web Application deployed using Apache Tomcat on Ubuntu Server (VirtualBox)
 
 ---
 
