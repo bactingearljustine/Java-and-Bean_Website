@@ -210,6 +210,21 @@ cd /var/lib/tomcat10/webapps/myproject/src
 
 ---
 
+### ▶️ Step 7: Start and Enable Tomcat
+```bash
+sudo systemctl start tomcat10
+sudo systemctl enable tomcat10
+sudo systemctl status tomcat10
+```
+
+---
+
+### 🔄 Step 8: Restart Tomcat
+```bash
+sudo systemctl restart tomcat10
+```
+
+---
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
