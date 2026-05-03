@@ -206,7 +206,7 @@ java -version
 ```
 ---
 
-### Step 2: Install Apache Tomcat 10
+### 📥 Step 2: Install Apache Tomcat 10
 ```bash
 sudo apt install tomcat10 -y
 ```
