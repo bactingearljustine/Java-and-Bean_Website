@@ -196,6 +196,19 @@ ip a
 
 
 ---
+### ☕ Step 1: Install Java (Required for Tomcat)
+```bash
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+java -version
+
+---
+
+### Step 2: Install Apache Tomcat 10
+```bash
+sudo apt install tomcat10 -y
+
+---
 
 ### 📦 Step 3: Move Project to Tomcat Directory
 ```bash
