@@ -197,6 +197,19 @@ ip a
 
 ---
 
+### 📦 Step 3: Move Project to Tomcat Directory
+```bash
+sudo cp -r /media/sf_ver2.0 /var/lib/tomcat10/webapps/myproject
+```
+---
+
+### 📂 Step 4: Go to Project Source Folder (Inside Tomcat)
+```bash
+cd /var/lib/tomcat10/webapps/myproject/src
+```
+
+---
+
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
