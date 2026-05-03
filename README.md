@@ -101,6 +101,13 @@ Start the VM and install Ubuntu:
 Reboot after installation.
 
 ---
+###Step 1: Install Java (Required for Tomcat)
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+java -version
+ 
+###Step 2: Install Apache Tomcat 10
+sudo apt install tomcat10 -y
 
 ### 🔧 Step 3: Update System
 
