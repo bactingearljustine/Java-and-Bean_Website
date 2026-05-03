@@ -193,7 +193,9 @@ Check IP:
 ```bash
 ip a
 ```
-
+---
+# ☕ Apache Tomcat 10 + Java Setup & Deployment (Ubuntu)
+This guide explains how to install Java, set up Apache Tomcat 10, compile Java Servlet files, and deploy a web application using a shared folder in Ubuntu.
 
 ---
 ### ☕ Step 1: Install Java (Required for Tomcat)
@@ -201,13 +203,13 @@ ip a
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
-
+```
 ---
 
 ### Step 2: Install Apache Tomcat 10
 ```bash
 sudo apt install tomcat10 -y
-
+```
 ---
 
 ### 📦 Step 3: Move Project to Tomcat Directory
@@ -236,7 +238,14 @@ sudo systemctl status tomcat10
 ```bash
 sudo systemctl restart tomcat10
 ```
-
+### 🌐 Step 9: Access the Web Application
+```bash
+http://<VM-IP>:8080/myproject
+```
+or
+```bash
+http://localhost:8080/myproject
+```
 ---
 ## 🔐 Security Considerations
 
