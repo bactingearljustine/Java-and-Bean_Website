@@ -256,6 +256,35 @@ or
 ```bash
 http://localhost:8080/myproject
 ```
+
+## 📸 System Output
+
+### 🏠 Homepage
+![Homepage](images/dashboard.png)
+
+### 🔐 Login Page
+![Login](images/login.png)
+
+### 📝 Registration Page
+![Registration](images/register.png)
+
+### 📋 Menu Page
+**Menu View 1**
+![Menu 1](images/menu.png)
+
+**Menu View 2**
+![Menu 2](images/menu2.png)
+
+### 🛒 Cart
+![Cart](images/cart.png)
+
+### 🧾 Cart with Orders
+![Cart with Orders](images/cart2.png)
+
+### 🌐 Application Running in Browser (Ubuntu)
+![Running](images/vm_running.png)
+
+
 ---
 ## 🔐 Security Considerations
 
