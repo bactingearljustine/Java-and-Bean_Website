@@ -222,7 +222,18 @@ sudo cp -r /media/sf_ver2.0 /var/lib/tomcat10/webapps/myproject
 ```bash
 cd /var/lib/tomcat10/webapps/myproject/src
 ```
+---
 
+### 🧱 Step 5: Compile Java Servlet Files
+```bash
+javac -cp .:/usr/share/java/jakarta-servlet-api.jar -d ../WEB-INF/classes *.java
+```
+---
+
+### 📁 Step 6: Ensure Proper Directory Structure
+```
+mkdir -p ../WEB-INF/classes
+```
 ---
 
 ### ▶️ Step 7: Start and Enable Tomcat
@@ -231,7 +242,6 @@ sudo systemctl start tomcat10
 sudo systemctl enable tomcat10
 sudo systemctl status tomcat10
 ```
-
 ---
 
 ### 🔄 Step 8: Restart Tomcat
