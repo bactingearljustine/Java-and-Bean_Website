@@ -119,7 +119,7 @@ sudo apt upgrade -y
 2. Go to Settings → Shared Folders  
 3. Add:
    - Folder Path: your project folder  
-   - Folder Name: yokai2.0  
+   - Folder Name: ver2.0  
    - ✔ Auto-mount  
    - ✔ Make Permanent  
 4. Start VM  
@@ -136,7 +136,7 @@ ls
 Expected output:
 
 ```
-sf_yokai2.0
+sf_ver2.0
 ```
 
 ---
@@ -151,7 +151,7 @@ sudo reboot
 After reboot:
 
 ```bash
-cd /media/sf_yokai2.0
+cd /media/sf_ver2.0
 ls
 ```
 
@@ -160,7 +160,7 @@ ls
 ### 📦 Step 6: Access Website Files
 
 ```bash
-cd /media/sf_yokai2.0
+cd /media/sf_ver2.0
 ls
 ```
 
