@@ -288,6 +288,22 @@ http://localhost:8080/myproject
 
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 
+
+## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
+
+### 1. Files Not Deployed to Tomcat
+❌ Problem:  Project files were still in the shared folder: /media/sf_yokai2.0
+
+💡 Cause:  
+Files were not copied to Tomcat’s deployment directory.
+
+✅ Solution:
+```bash
+sudo cp -r /media/sf_yokai2.0 /var/lib/tomcat10/webapps/myproject
+```
+
+---
+
 ### 2. Permission Denied (Shared Folder)
 ❌ Problem:
 Cannot access shared folder files
