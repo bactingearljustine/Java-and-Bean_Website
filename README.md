@@ -284,7 +284,24 @@ http://localhost:8080/myproject
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
 
+---
+
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
+
+### 4. Shared Folder Not Showing in /media
+```bash
+sudo usermod -aG vboxsf $USER
+sudo reboot
+```
+
+---
+
+### 5. “No such file or directory” Error
+```bash
+ls
+cd /media/sf_ver2.0
+```
+
 ---
 ## 🔐 Security Considerations
 
