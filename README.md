@@ -284,7 +284,7 @@ http://localhost:8080/myproject
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
 
-
+## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 ---
 ## 🔐 Security Considerations
 
