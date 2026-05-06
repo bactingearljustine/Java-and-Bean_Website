@@ -6,9 +6,9 @@ A Java Web Application deployed using Apache Tomcat on Ubuntu Server (VirtualBox
 
 ## 📌 Project Overview
 
-The **Java & Bean Café Website** is a dynamic web application designed to simulate a café system where users can browse menu items, view products, and interact with the system.
+The *Java & Bean Café Website* is a dynamic Java web application that simulates an online café system where users can browse menu items, view products, and interact with the platform.
 
-This project demonstrates **web deployment inside an Ubuntu Server virtual machine** using a shared folder setup.
+This project demonstrates the deployment of a Java-based web application using *Apache Tomcat* on an *Ubuntu Server running in a VirtualBox virtual machine*. It highlights server-side application hosting, shared folder integration, and web application deployment in a controlled virtual environment.
 
 ---
 
@@ -283,7 +283,25 @@ http://localhost:8080/myproject
 
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
+---
 
+
+## 🌍 Cross-Device Testing
+
+The system was successfully tested across multiple devices to ensure responsiveness and accessibility:
+
+**📱iPhone (Safari)**
+- ![📱 iPhone (Safari)](images/safari.png)
+
+**🤖 Android (Chrome)**
+- ![🤖 Android (Chrome)](images/android.png)
+
+**💻 Laptop (Browser)**
+- ![💻 Laptop (Browser)](images/other_laptop.png)
+
+All devices were able to access the system using the VM IP address: (http://192.168.100.77:8080/myproject)
+
+This confirms proper network configuration and server deployment.
 ---
 
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
