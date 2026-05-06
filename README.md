@@ -289,11 +289,9 @@ http://localhost:8080/myproject
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 
 ### 4. Shared Folder Not Showing in /media
-❌ Issue:  
-Shared folder (sf_ver2.0) did not appear after mounting  
+❌ Issue: Shared folder (sf_ver2.0) did not appear after mounting  
 
-🔍 Cause:  
-VirtualBox Guest Additions not
+🔍 Cause: VirtualBox Guest Additions not
  properly configured  
  
 ```bash
