@@ -288,6 +288,48 @@ http://localhost:8080/myproject
 
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 
+### 2. Permission Denied (Shared Folder)
+❌ Problem:
+Cannot access shared folder files
+
+💡 Cause:
+User not added to VirtualBox shared folder group
+
+✅ Solution:
+```bash
+sudo usermod -aG vboxsf $USER
+sudo reboot
+
+```
+---
+
+### 3. Website Not Loading (Blank / 404)
+
+❌ Problem:
+Website not loading
+Blank page or 404 error
+
+💡 Causes:
+Incorrect URL
+Application not deployed correctly
+Tomcat service not running
+
+✅ Solution:
+```bash
+✔ Use correct URLs:
+http://<VM-IP>:8080/
+http://<VM-IP>:8080/myproject/
+
+✔ Check Tomcat status:
+sudo systemctl status tomcat10
+✔ Restart Tomcat:
+
+sudo systemctl restart tomcat10
+
+```
+
+--- 
+
 ### 4. Shared Folder Not Showing in /media
 ❌ Issue: Shared folder (sf_ver2.0) did not appear after mounting  
 
