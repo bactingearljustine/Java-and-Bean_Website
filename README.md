@@ -412,29 +412,40 @@ Tomcat is running, but the application is not properly deployed.
 ls /var/lib/tomcat10/webapps
 
 Expected:
+```bash
 myapp.war 
 myapp/
+```
 
 If missing:
 sudo cp myapp.war /var/lib/tomcat10/webapps/
 
 ### 2. Restart Tomcat
+```bash
 sudo systemctl restart tomcat10
+```
 
 ### 3. Verify Extraction
+```bash
 ls /var/lib/tomcat10/webapps
 
+```
 Should show:
+```bash
 myapp/
 myapp.war
+
+```
 
 If only .war exists:
 WAR may be invalid
 Structure may be incorrect
 
 ### 4. Check Project Structure
+```bash
 ls /var/lib/tomcat10/webapps/myapp/WEB-INF
 
+```
 Must contain:
 web.xml
 classes/
@@ -451,16 +462,25 @@ Correct:
 │   └── WEB-INF/
 
 ### 6. Use Correct URL
+```bash
 http://localhost:8080/myapp
+
+```
 
 Do NOT use:
 /myapp.war
 
 ### 7. Check Logs (If Still Failing)
+```bash
 sudo journalctl -u tomcat10
 
+```
+
 ### 8. Test Tomcat Server
+```bash
 http://localhost:8080
+
+```
 
 If it loads → Tomcat is working
 If not → server configuration issue
