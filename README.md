@@ -335,7 +335,8 @@ sudo systemctl restart tomcat10
 
 🔍 Cause: VirtualBox Guest Additions not
  properly configured  
- 
+
+ ✅ Solution:
 ```bash
 sudo usermod -aG vboxsf $USER
 sudo reboot
@@ -351,6 +352,7 @@ Directory not found when navigating
 🔍 Cause:
 Incorrect folder path or folder name
 
+✅ Solution:
 ```bash
 ls
 cd /media/sf_ver2.0
