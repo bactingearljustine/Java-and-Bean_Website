@@ -288,9 +288,6 @@ http://localhost:8080/myproject
 
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 
-
-## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
-
 ### 1. Files Not Deployed to Tomcat
 ❌ Problem:  Project files were still in the shared folder: /media/sf_yokai2.0
 
