@@ -294,8 +294,7 @@ http://localhost:8080/myproject
 ### 1. Files Not Deployed to Tomcat
 ❌ Problem:  Project files were still in the shared folder: /media/sf_yokai2.0
 
-💡 Cause:  
-Files were not copied to Tomcat’s deployment directory.
+💡 Cause:  Files were not copied to Tomcat’s deployment directory.
 
 ✅ Solution:
 ```bash
