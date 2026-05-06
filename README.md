@@ -375,11 +375,9 @@ cd /media/sf_ver2.0
 
 ### 6. Java Compilation Errors
 
-❌ Issue:
-Errors when compiling Java servlet files
+❌ Problem: Errors when compiling Java servlet files
 
-🔍 Cause:
-Missing servlet API in the classpath
+🔍 Cause:Missing servlet API in the classpath
 
 ✅ Solution:
 ```bash
