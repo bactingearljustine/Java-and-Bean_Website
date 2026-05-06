@@ -302,7 +302,76 @@ ls
 cd /media/sf_ver2.0
 ```
 
+--- 
+ 
+### 7. 404 Error – Application Not Found
+
+❌ Problem:
+HTTP Status 404 – /myapp is not available
+
+💡 Meaning:
+Tomcat is running, but the application is not properly deployed.
+
+### 🔍 Step-by-Step Fix
+### 1. Check Deployment Directory
+ls /var/lib/tomcat10/webapps
+
+Expected:
+myapp.war 
+myapp/
+
+If missing:
+sudo cp myapp.war /var/lib/tomcat10/webapps/
+
+### 2. Restart Tomcat
+sudo systemctl restart tomcat10
+
+### 3. Verify Extraction
+ls /var/lib/tomcat10/webapps
+
+Should show:
+myapp/
+myapp.war
+
+If only .war exists:
+WAR may be invalid
+Structure may be incorrect
+
+### 4. Check Project Structure
+ls /var/lib/tomcat10/webapps/myapp/WEB-INF
+
+Must contain:
+web.xml
+classes/
+
+### 5. Fix Common Structure Errors
+
+Wrong:
+│── myapp/
+│   └── myapp/
+│      └── WEB-INF/
+
+Correct:
+│── myapp/
+│   └── WEB-INF/
+
+### 6. Use Correct URL
+http://localhost:8080/myapp
+
+Do NOT use:
+/myapp.war
+
+### 7. Check Logs (If Still Failing)
+sudo journalctl -u tomcat10
+
+### 8. Test Tomcat Server
+http://localhost:8080
+
+If it loads → Tomcat is working
+If not → server configuration issue
 ---
+
+
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
