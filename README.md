@@ -371,7 +371,20 @@ sudo reboot
 ls
 cd /media/sf_ver2.0
 ```
+---
 
+### 6. Java Compilation Errors
+
+❌ Issue:
+Errors when compiling Java servlet files
+
+🔍 Cause:
+Missing servlet API in the classpath
+
+✅ Solution:
+```bash
+javac -cp .:/usr/share/java/jakarta-servlet-api.jar -d ../WEB-INF/classes *.java
+```
 --- 
  
 ### 7. 404 Error – Application Not Found
