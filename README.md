@@ -451,6 +451,7 @@ web.xml
 classes/
 
 ### 5. Fix Common Structure Errors
+```bash
 
 Wrong:
 │── myapp/
@@ -460,6 +461,8 @@ Wrong:
 Correct:
 │── myapp/
 │   └── WEB-INF/
+
+```
 
 ### 6. Use Correct URL
 ```bash
