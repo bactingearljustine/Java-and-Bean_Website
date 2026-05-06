@@ -289,6 +289,13 @@ http://localhost:8080/myproject
 ## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
 
 ### 4. Shared Folder Not Showing in /media
+❌ Issue:  
+Shared folder (sf_ver2.0) did not appear after mounting  
+
+🔍 Cause:  
+VirtualBox Guest Additions not
+ properly configured  
+ 
 ```bash
 sudo usermod -aG vboxsf $USER
 sudo reboot
@@ -297,6 +304,13 @@ sudo reboot
 ---
 
 ### 5. “No such file or directory” Error
+
+❌ Issue:
+Directory not found when navigating
+
+🔍 Cause:
+Incorrect folder path or folder name
+
 ```bash
 ls
 cd /media/sf_ver2.0
