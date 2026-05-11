@@ -257,10 +257,54 @@ or
 http://localhost:8080/myproject
 ```
 ---
-## 🗄️ Database Setup and Connection
+# 🗄️ Database Setup and Connection
+
+### 📌 1. Installing MariaDB/MySQL
+
+The database management system used for the project was MariaDB, which served as the backend database for storing user accounts, menu information, and order records.
+
+### 💻 Installation
+
+```bash id="h1"
+sudo apt update
+sudo apt install mariadb-server -y
+```
 
 ---
-## 📸 System Output
+
+### ▶️ 2. Starting the Database Service
+
+After installation, the MariaDB service was started to enable database operations.
+
+```bash id="h2"
+sudo systemctl start mysql
+```
+
+To verify whether the service was running successfully:
+
+```bash id="h3"
+sudo systemctl status mysql
+```
+
+---
+
+### 🔍 3. Verifying the MariaDB JDBC Driver
+
+The MariaDB JDBC driver was required to establish communication between the Java Servlets and the MariaDB database.
+To verify the presence of the JDBC driver:
+
+```bash id="h4"
+ls /usr/share/java/ | grep mariadb
+```
+
+### ✅ Expected Output
+
+```text id="h5"
+mariadb-java-client.jar
+```
+
+---
+### 📸 System Output
 
 ### 🏠 Homepage
 ![Homepage](images/dashboard.png)
@@ -489,53 +533,6 @@ http://localhost:8080
 
 If it loads → Tomcat is working
 If not → server configuration issue
-
----
-# 🗄️ Database Setup and Connection
-
-## 📌 1. Installing MariaDB/MySQL
-
-The database management system used for the project was MariaDB, which served as the backend database for storing user accounts, menu information, and order records.
-
-### 💻 Installation
-
-```bash id="h1"
-sudo apt update
-sudo apt install mariadb-server -y
-```
-
----
-
-# ▶️ 2. Starting the Database Service
-
-After installation, the MariaDB service was started to enable database operations.
-
-```bash id="h2"
-sudo systemctl start mysql
-```
-
-To verify whether the service was running successfully:
-
-```bash id="h3"
-sudo systemctl status mysql
-```
-
----
-
-# 🔍 3. Verifying the MariaDB JDBC Driver
-
-The MariaDB JDBC driver was required to establish communication between the Java Servlets and the MariaDB database.
-To verify the presence of the JDBC driver:
-
-```bash id="h4"
-ls /usr/share/java/ | grep mariadb
-```
-
-### ✅ Expected Output
-
-```text id="h5"
-mariadb-java-client.jar
-```
 
 ---
 ## 🛠️ Database Troubleshooting
