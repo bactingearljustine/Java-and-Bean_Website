@@ -256,7 +256,10 @@ or
 ```bash
 http://localhost:8080/myproject
 ```
+---
+## 🗄️ Database Setup and Connection
 
+---
 ## 📸 System Output
 
 ### 🏠 Homepage
@@ -284,7 +287,6 @@ http://localhost:8080/myproject
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
 ---
-
 
 ## 🌍 Cross-Device Testing
 
@@ -487,9 +489,12 @@ http://localhost:8080
 
 If it loads → Tomcat is working
 If not → server configuration issue
+
 ---
+## 🛠️ Database Troubleshooting
 
 
+---
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
