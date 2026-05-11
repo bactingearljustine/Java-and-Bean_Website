@@ -302,7 +302,84 @@ ls /usr/share/java/ | grep mariadb
 ```text id="h5"
 mariadb-java-client.jar
 ```
+---
+# 🔐 4. Accessing the Database
 
+The MariaDB server was accessed using the root account.
+
+```bash id="h6"
+mysql -u root -p
+```
+---
+
+# 🏗️ 5. Creating the Project Database
+
+A dedicated database named cafeDB was created for the web application.
+
+```sql id="h7"
+CREATE DATABASE cafeDB;
+```
+To select the database for use:
+
+```sql id="h8"
+USE cafeDB;
+```
+---
+
+# 📋 6. Creating the Required Database Tables
+
+## 👤 Users Table
+
+The users table stored account information for registered users.
+
+```sql id="h9"
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100),
+    email VARCHAR(100),
+    password VARCHAR(100)
+);
+```
+---
+
+## 🍽️ Menu Table
+
+The menu table stored available food and beverage items.
+```
+sql id="h10"
+CREATE TABLE menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100),
+    price DOUBLE
+);
+```
+---
+
+## 🧾 Orders Table
+
+The orders table stored customer order records.
+```
+sql id="h11"
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total DOUBLE
+);
+```
+---
+
+## 📦 Order Items Table
+
+The order_items table stored individual menu items included in each order.
+
+```sql id="h12"
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    menu_id INT,
+    quantity INT
+);
+```
 ---
 ### 📸 System Output
 
