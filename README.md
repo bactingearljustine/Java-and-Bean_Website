@@ -641,7 +641,7 @@ Table 'cafedb.users' doesn't exist
 
 The required `users` table had not yet been created in the database.
 
-### ✅ SOLUTION 
+### ✅ Solution
 
 The missing table was manually created using SQL commands.
 
@@ -653,7 +653,7 @@ The missing table was manually created using SQL commands.
 
 The HTML login form did not contain the required `name` attributes, preventing the servlet from retrieving the submitted values.
 
-### ✅ SOLUTION 
+### ✅ Solution
 
 The following attributes were added to the input fields:
 
@@ -677,7 +677,7 @@ request.getParameter("password");
 
 `LoginServlet` was not properly registered in the `web.xml` deployment descriptor.
 
-### ✅ SOLUTION 
+### ✅ Solution
 
 The following servlet configuration was added to `web.xml`:
 
