@@ -380,7 +380,67 @@ CREATE TABLE order_items (
     quantity INT
 );
 ```
+# 🔗 7. Establishing Database Connectivity
+
+## 📄 DBConnection.java
+
+The `DBConnection.java` file was responsible for creating a connection between the Java web application and the MariaDB database.
+
+```java id="h13"
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+    public static Connection getConnection() {
+
+        Connection con = null;
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+
+            con = DriverManager.getConnection(
+                "jdbc:mariadb://localhost:3306/cafeDB",
+                "root",
+                "YOUR_PASSWORD"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return con;
+    }
+}
+```
+
 ---
+
+# ⚙️ 8. JDBC Driver Configuration and Compilation
+
+To enable Java Servlets to communicate with MariaDB, the JDBC driver `.jar` file needed to be included during compilation.
+
+### 📁 Driver Location
+
+```text id="h14"
+/usr/share/java/mariadb-java-client.jar
+```
+
+### 💻 Compilation Command
+
+```bash id="h15"
+sudo javac -cp ".:/usr/share/tomcat10/lib/*:/usr/share/java/mariadb-java-client.jar" -d /var/lib/tomcat10/webapps/myproject/WEB-INF/classes *.java
+```
+
+### 🔄 Restart Tomcat
+
+```bash id="h16"
+sudo systemctl restart tomcat10
+```
+
+---
+
 ### 📸 System Output
 
 ### 🏠 Homepage
@@ -773,7 +833,34 @@ along with the corresponding servlet mapping.
 - Avoid running services as root  
 - Keep Ubuntu updated  
 
+---
 
+# ❌ Problem 8 — Session Persistence Failure
+
+### 📌 Cause
+
+User session management was not implemented after successful authentication.
+
+### ✅ Solution
+
+HTTP session handling was added using:
+
+```java id="h26"
+HttpSession session = request.getSession();
+session.setAttribute("username", username);
+```
+
+---
+
+# ❌ Problem 9 — Browser Password Security Warning
+
+### 📌 Cause
+
+Weak passwords used during testing triggered browser security warnings from Google Password Manager.
+
+### ✅ Solution
+
+Stronger passwords were used during testing, and the warning was identified as a browser-side security notification rather than a system issue.
 ---
 
 ## 👨‍💻 Author
