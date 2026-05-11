@@ -467,6 +467,10 @@ sudo systemctl restart tomcat10
 
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
+
+### 🗄️ Sample Database Output
+![Cafe Database](images/database.png)
+
 ---
 
 ## 🌍 Cross-Device Testing
@@ -861,6 +865,7 @@ Weak passwords used during testing triggered browser security warnings from Goog
 ### ✅ Solution
 
 Stronger passwords were used during testing, and the warning was identified as a browser-side security notification rather than a system issue.
+
 ---
 
 ## 👨‍💻 Author
