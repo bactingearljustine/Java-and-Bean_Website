@@ -493,7 +493,93 @@ If not → server configuration issue
 ---
 ## 🛠️ Database Troubleshooting
 
+## ❌ Problem 1 — HTTP 404 Error
 
+### ⚠️ Error Message
+
+```text id="h17"
+HTTP Status 404 – Not Found
+The requested resource [/myproject/RegisterServlet] is not available
+```
+
+### 📌 Cause
+
+The servlet could not be located due to one or more of the following issues:
+
+* Missing servlet mapping in `web.xml`
+* Servlet class was not compiled
+* Incorrect project deployment structure
+
+### ✅ Solution
+
+* Added the correct servlet mapping inside `web.xml`
+* Recompiled all Java Servlet files
+* Restarted the Apache Tomcat service
+
+---
+
+# ❌ Problem 2 — HTTP 405 Method Not Allowed
+
+### 📌 Cause
+
+The servlet only supported HTTP POST requests, but the servlet URL was accessed directly through the browser using a GET request.
+
+### ✅ Solution
+
+The servlet was accessed through an HTML form configured with:
+
+```html id="h18"
+method="post"
+```
+
+instead of directly opening the servlet URL in the browser.
+
+---
+
+# ❌ Problem 3 — NullPointerException
+
+### ⚠️ Error Message
+
+```text id="h19"
+java.lang.NullPointerException
+at RegisterServlet.doPost(RegisterServlet.java:24)
+```
+
+### 📌 Cause
+
+The database connection object returned `null`, indicating that the database connection failed.
+
+### ✅ Solution
+
+* Corrected the database credentials
+* Verified that the MariaDB service was running
+* Installed and verified the MariaDB JDBC driver
+
+---
+
+# ❌ Problem 4 — Access Denied for Root User
+
+
+### ⚠️ Error Message
+
+```text id="h20"
+Access denied for user 'root'@'localhost'
+```
+
+### 📌 Cause
+
+The root account password or authentication configuration was incorrect.
+
+### ✅ Solution
+
+The root password was updated using:
+
+```sql id="h21"
+ALTER USER 'root'@'localhost'
+IDENTIFIED BY 'newpassword';
+
+FLUSH PRIVILEGES;
+```
 ---
 ## 🔐 Security Considerations
 
