@@ -6,9 +6,9 @@ A Java Web Application deployed using Apache Tomcat on Ubuntu Server (VirtualBox
 
 ## 📌 Project Overview
 
-The **Java & Bean Café Website** is a dynamic web application designed to simulate a café system where users can browse menu items, view products, and interact with the system.
+The *Java & Bean Café Website* is a dynamic Java web application that simulates an online café system where users can browse menu items, view products, and interact with the platform.
 
-This project demonstrates **web deployment inside an Ubuntu Server virtual machine** using a shared folder setup.
+This project demonstrates the deployment of a Java-based web application using *Apache Tomcat* on an *Ubuntu Server running in a VirtualBox virtual machine*. It highlights server-side application hosting, shared folder integration, and web application deployment in a controlled virtual environment.
 
 ---
 
@@ -256,7 +256,10 @@ or
 ```bash
 http://localhost:8080/myproject
 ```
+---
+## 🗄️ Database Setup and Connection
 
+---
 ## 📸 System Output
 
 ### 🏠 Homepage
@@ -283,6 +286,212 @@ http://localhost:8080/myproject
 
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
+---
+
+## 🌍 Cross-Device Testing
+
+The system was successfully tested across multiple devices to ensure responsiveness and accessibility:
+
+**📱iPhone (Safari)**
+- ![📱 iPhone (Safari)](images/safari.png)
+
+**🤖 Android (Chrome)**
+- ![🤖 Android (Chrome)](images/android.png)
+
+**💻 Laptop (Browser)**
+- ![💻 Laptop (Browser)](images/other_laptop.png)
+
+All devices were able to access the system using the VM IP address: (http://192.168.100.77:8080/myproject)
+
+This confirms proper network configuration and server deployment.
+---
+
+## 🛠️ Troubleshooting (Struggles Encountered & Solutions)
+
+### 1. Files Not Deployed to Tomcat
+❌ Problem:  Project files were still in the shared folder: /media/sf_yokai2.0
+
+💡 Cause:  Files were not copied to Tomcat’s deployment directory.
+
+✅ Solution:
+```bash
+sudo cp -r /media/sf_yokai2.0 /var/lib/tomcat10/webapps/myproject
+```
+
+---
+
+### 2. Permission Denied (Shared Folder)
+❌ Problem:
+Cannot access shared folder files
+
+💡 Cause:
+User not added to VirtualBox shared folder group
+
+✅ Solution:
+```bash
+sudo usermod -aG vboxsf $USER
+sudo reboot
+
+```
+---
+
+### 3. Website Not Loading (Blank / 404)
+
+❌ Problem:
+Website not loading
+Blank page or 404 error
+
+💡 Causes:
+Incorrect URL
+Application not deployed correctly
+Tomcat service not running
+
+✅ Solution:
+```bash
+✔ Use correct URLs:
+http://<VM-IP>:8080/
+http://<VM-IP>:8080/myproject/
+
+✔ Check Tomcat status:
+sudo systemctl status tomcat10
+✔ Restart Tomcat:
+
+sudo systemctl restart tomcat10
+
+```
+
+--- 
+
+### 4. Shared Folder Not Showing in /media
+❌ Problem: Shared folder (sf_ver2.0) did not appear after mounting  
+
+🔍 Cause: VirtualBox Guest Additions not
+ properly configured  
+
+ ✅ Solution:
+```bash
+sudo usermod -aG vboxsf $USER
+sudo reboot
+```
+
+---
+
+### 5. “No such file or directory” Error
+
+❌ Problem: Directory not found when navigating
+
+🔍 Cause: Incorrect folder path or folder name
+
+✅ Solution:
+```bash
+ls
+cd /media/sf_ver2.0
+```
+---
+
+### 6. Java Compilation Errors
+
+❌ Problem: Errors when compiling Java servlet files
+
+🔍 Cause:Missing servlet API in the classpath
+
+✅ Solution:
+```bash
+javac -cp .:/usr/share/java/jakarta-servlet-api.jar -d ../WEB-INF/classes *.java
+```
+--- 
+ 
+### 7. 404 Error – Application Not Found
+
+❌ Problem:
+HTTP Status 404 – /myapp is not available
+
+💡 Meaning:
+Tomcat is running, but the application is not properly deployed.
+
+### 🔍 Step-by-Step Fix
+### 1. Check Deployment Directory
+ls /var/lib/tomcat10/webapps
+
+Expected:
+```bash
+myapp.war 
+myapp/
+```
+
+If missing:
+sudo cp myapp.war /var/lib/tomcat10/webapps/
+
+### 2. Restart Tomcat
+```bash
+sudo systemctl restart tomcat10
+```
+
+### 3. Verify Extraction
+```bash
+ls /var/lib/tomcat10/webapps
+
+```
+Should show:
+```bash
+myapp/
+myapp.war
+
+```
+
+If only .war exists:
+WAR may be invalid
+Structure may be incorrect
+
+### 4. Check Project Structure
+```bash
+ls /var/lib/tomcat10/webapps/myapp/WEB-INF
+
+```
+Must contain:
+web.xml
+classes/
+
+### 5. Fix Common Structure Errors
+```bash
+
+Wrong:
+│── myapp/
+│   └── myapp/
+│      └── WEB-INF/
+
+Correct:
+│── myapp/
+│   └── WEB-INF/
+
+```
+
+### 6. Use Correct URL
+```bash
+http://localhost:8080/myapp
+
+```
+
+Do NOT use:
+/myapp.war
+
+### 7. Check Logs (If Still Failing)
+```bash
+sudo journalctl -u tomcat10
+
+```
+
+### 8. Test Tomcat Server
+```bash
+http://localhost:8080
+
+```
+
+If it loads → Tomcat is working
+If not → server configuration issue
+
+---
+## 🛠️ Database Troubleshooting
 
 
 ---
