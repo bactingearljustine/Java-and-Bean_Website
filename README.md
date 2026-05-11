@@ -581,6 +581,70 @@ IDENTIFIED BY 'newpassword';
 FLUSH PRIVILEGES;
 ```
 ---
+
+# ❌ Problem 5 — Missing Database Table
+
+### ⚠️ Error Message
+
+```text id="h22"
+Table 'cafedb.users' doesn't exist
+```
+
+### 📌 Cause
+
+The required `users` table had not yet been created in the database.
+
+### ✅ SOLUTION 
+
+The missing table was manually created using SQL commands.
+
+---
+
+# ❌ Problem 6 — Login Authentication Failure
+
+### 📌 Cause
+
+The HTML login form did not contain the required `name` attributes, preventing the servlet from retrieving the submitted values.
+
+### ✅ SOLUTION 
+
+The following attributes were added to the input fields:
+
+```html id="h23"
+name="username"
+name="password"
+```
+
+This enabled the servlet to retrieve form values using:
+
+```java id="h24"
+request.getParameter("username");
+request.getParameter("password");
+```
+
+---
+
+# ❌ Problem 7 — LoginServlet HTTP 404 Error
+
+### 📌 Cause
+
+`LoginServlet` was not properly registered in the `web.xml` deployment descriptor.
+
+### ✅ SOLUTION 
+
+The following servlet configuration was added to `web.xml`:
+
+```xml id="h25"
+<servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+</servlet>
+```
+
+along with the corresponding servlet mapping.
+
+---
+
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
