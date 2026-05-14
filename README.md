@@ -830,15 +830,6 @@ along with the corresponding servlet mapping.
 
 ---
 
-## 🔐 Security Considerations
-
-- Use strong database credentials  
-- Restrict access to sensitive files  
-- Avoid running services as root  
-- Keep Ubuntu updated  
-
----
-
 # ❌ Problem 8 — Session Persistence Failure
 
 ### 📌 Cause
@@ -865,6 +856,15 @@ Weak passwords used during testing triggered browser security warnings from Goog
 ### ✅ Solution
 
 Stronger passwords were used during testing, and the warning was identified as a browser-side security notification rather than a system issue.
+
+---
+
+## 🔐 Security Considerations
+
+- Use strong database credentials  
+- Restrict access to sensitive files  
+- Avoid running services as root  
+- Keep Ubuntu updated  
 
 ---
 
