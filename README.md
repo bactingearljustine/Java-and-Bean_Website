@@ -257,10 +257,191 @@ or
 http://localhost:8080/myproject
 ```
 ---
-## 🗄️ Database Setup and Connection
+# 🗄️ Database Setup and Connection
+
+### 📌 1. Installing MariaDB/MySQL
+
+The database management system used for the project was MariaDB, which served as the backend database for storing user accounts, menu information, and order records.
+
+### 💻 Installation
+
+```bash id="h1"
+sudo apt update
+sudo apt install mariadb-server -y
+```
 
 ---
-## 📸 System Output
+
+### ▶️ 2. Starting the Database Service
+
+After installation, the MariaDB service was started to enable database operations.
+
+```bash id="h2"
+sudo systemctl start mysql
+```
+
+To verify whether the service was running successfully:
+
+```bash id="h3"
+sudo systemctl status mysql
+```
+
+---
+
+### 🔍 3. Verifying the MariaDB JDBC Driver
+
+The MariaDB JDBC driver was required to establish communication between the Java Servlets and the MariaDB database.
+To verify the presence of the JDBC driver:
+
+```bash id="h4"
+ls /usr/share/java/ | grep mariadb
+```
+
+### ✅ Expected Output
+
+```text id="h5"
+mariadb-java-client.jar
+```
+---
+# 🔐 4. Accessing the Database
+
+The MariaDB server was accessed using the root account.
+
+```bash id="h6"
+mysql -u root -p
+```
+---
+
+# 🏗️ 5. Creating the Project Database
+
+A dedicated database named cafeDB was created for the web application.
+
+```sql id="h7"
+CREATE DATABASE cafeDB;
+```
+To select the database for use:
+
+```sql id="h8"
+USE cafeDB;
+```
+---
+
+# 📋 6. Creating the Required Database Tables
+
+## 👤 Users Table
+
+The users table stored account information for registered users.
+
+```sql id="h9"
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100),
+    email VARCHAR(100),
+    password VARCHAR(100)
+);
+```
+---
+
+## 🍽️ Menu Table
+
+The menu table stored available food and beverage items.
+```
+sql id="h10"
+CREATE TABLE menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100),
+    price DOUBLE
+);
+```
+---
+
+## 🧾 Orders Table
+
+The orders table stored customer order records.
+```
+sql id="h11"
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total DOUBLE
+);
+```
+---
+
+## 📦 Order Items Table
+
+The order_items table stored individual menu items included in each order.
+
+```sql id="h12"
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    menu_id INT,
+    quantity INT
+);
+```
+# 🔗 7. Establishing Database Connectivity
+
+## 📄 DBConnection.java
+
+The `DBConnection.java` file was responsible for creating a connection between the Java web application and the MariaDB database.
+
+```java id="h13"
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+    public static Connection getConnection() {
+
+        Connection con = null;
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+
+            con = DriverManager.getConnection(
+                "jdbc:mariadb://localhost:3306/cafeDB",
+                "root",
+                "YOUR_PASSWORD"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return con;
+    }
+}
+```
+
+---
+
+# ⚙️ 8. JDBC Driver Configuration and Compilation
+
+To enable Java Servlets to communicate with MariaDB, the JDBC driver `.jar` file needed to be included during compilation.
+
+### 📁 Driver Location
+
+```text id="h14"
+/usr/share/java/mariadb-java-client.jar
+```
+
+### 💻 Compilation Command
+
+```bash id="h15"
+sudo javac -cp ".:/usr/share/tomcat10/lib/*:/usr/share/java/mariadb-java-client.jar" -d /var/lib/tomcat10/webapps/myproject/WEB-INF/classes *.java
+```
+
+### 🔄 Restart Tomcat
+
+```bash id="h16"
+sudo systemctl restart tomcat10
+```
+
+---
+
+### 📸 System Output
 
 ### 🏠 Homepage
 ![Homepage](images/dashboard.png)
@@ -286,6 +467,10 @@ http://localhost:8080/myproject
 
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
+
+### 🗄️ Sample Database Output
+![Cafe Database](images/database.png)
+
 ---
 
 ## 🌍 Cross-Device Testing
@@ -493,8 +678,158 @@ If not → server configuration issue
 ---
 ## 🛠️ Database Troubleshooting
 
+## ❌ Problem 1 — HTTP 404 Error
+
+### ⚠️ Error Message
+
+```text id="h17"
+HTTP Status 404 – Not Found
+The requested resource [/myproject/RegisterServlet] is not available
+```
+
+### 📌 Cause
+
+The servlet could not be located due to one or more of the following issues:
+
+* Missing servlet mapping in `web.xml`
+* Servlet class was not compiled
+* Incorrect project deployment structure
+
+### ✅ Solution
+
+* Added the correct servlet mapping inside `web.xml`
+* Recompiled all Java Servlet files
+* Restarted the Apache Tomcat service
 
 ---
+
+# ❌ Problem 2 — HTTP 405 Method Not Allowed
+
+### 📌 Cause
+
+The servlet only supported HTTP POST requests, but the servlet URL was accessed directly through the browser using a GET request.
+
+### ✅ Solution
+
+The servlet was accessed through an HTML form configured with:
+
+```html id="h18"
+method="post"
+```
+
+instead of directly opening the servlet URL in the browser.
+
+---
+
+# ❌ Problem 3 — NullPointerException
+
+### ⚠️ Error Message
+
+```text id="h19"
+java.lang.NullPointerException
+at RegisterServlet.doPost(RegisterServlet.java:24)
+```
+
+### 📌 Cause
+
+The database connection object returned `null`, indicating that the database connection failed.
+
+### ✅ Solution
+
+* Corrected the database credentials
+* Verified that the MariaDB service was running
+* Installed and verified the MariaDB JDBC driver
+
+---
+
+# ❌ Problem 4 — Access Denied for Root User
+
+
+### ⚠️ Error Message
+
+```text id="h20"
+Access denied for user 'root'@'localhost'
+```
+
+### 📌 Cause
+
+The root account password or authentication configuration was incorrect.
+
+### ✅ Solution
+
+The root password was updated using:
+
+```sql id="h21"
+ALTER USER 'root'@'localhost'
+IDENTIFIED BY 'newpassword';
+
+FLUSH PRIVILEGES;
+```
+---
+
+# ❌ Problem 5 — Missing Database Table
+
+### ⚠️ Error Message
+
+```text id="h22"
+Table 'cafedb.users' doesn't exist
+```
+
+### 📌 Cause
+
+The required `users` table had not yet been created in the database.
+
+### ✅ Solution
+
+The missing table was manually created using SQL commands.
+
+---
+
+# ❌ Problem 6 — Login Authentication Failure
+
+### 📌 Cause
+
+The HTML login form did not contain the required `name` attributes, preventing the servlet from retrieving the submitted values.
+
+### ✅ Solution
+
+The following attributes were added to the input fields:
+
+```html id="h23"
+name="username"
+name="password"
+```
+
+This enabled the servlet to retrieve form values using:
+
+```java id="h24"
+request.getParameter("username");
+request.getParameter("password");
+```
+
+---
+
+# ❌ Problem 7 — LoginServlet HTTP 404 Error
+
+### 📌 Cause
+
+`LoginServlet` was not properly registered in the `web.xml` deployment descriptor.
+
+### ✅ Solution
+
+The following servlet configuration was added to `web.xml`:
+
+```xml id="h25"
+<servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+</servlet>
+```
+
+along with the corresponding servlet mapping.
+
+---
+
 ## 🔐 Security Considerations
 
 - Use strong database credentials  
@@ -502,6 +837,34 @@ If not → server configuration issue
 - Avoid running services as root  
 - Keep Ubuntu updated  
 
+---
+
+# ❌ Problem 8 — Session Persistence Failure
+
+### 📌 Cause
+
+User session management was not implemented after successful authentication.
+
+### ✅ Solution
+
+HTTP session handling was added using:
+
+```java id="h26"
+HttpSession session = request.getSession();
+session.setAttribute("username", username);
+```
+
+---
+
+# ❌ Problem 9 — Browser Password Security Warning
+
+### 📌 Cause
+
+Weak passwords used during testing triggered browser security warnings from Google Password Manager.
+
+### ✅ Solution
+
+Stronger passwords were used during testing, and the warning was identified as a browser-side security notification rather than a system issue.
 
 ---
 
