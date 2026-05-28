@@ -12,16 +12,22 @@ This project demonstrates the deployment of a Java-based web application using *
 
 ---
 
-## 🚀 Features
+## 📌 Features
 
-- 📋 Dynamic café menu display  
-- 🛒 Product browsing interface  
-- 🔐 Backend design using Java (Servlets/JSP)  
-- 🌐 Hosted inside Ubuntu VM via Apache Tomcat  
-- 🗄️ Database connectivity (MySQL)  
-- 🧑‍💼 Optional admin functionalities  
+- User login
+- Registration
+- Café menu
+- Cart system
+- MariaDB integration
 
 ---
+
+## 🧰 Technologies Used
+
+- Java
+- Tomcat
+- MariaDB
+- Ubuntu Server
 
 ## 🖥️ System Architecture
 
@@ -37,17 +43,6 @@ This project demonstrates the deployment of a Java-based web application using *
 ### Environment
 - Ubuntu Server (VirtualBox VM)
 - Apache Tomcat (Java Web Server)  
-
----
-
-## 🧰 Technologies Used
-
-- ☕ Java (JDK 8 or higher)  
-- 🐧 Ubuntu Server  
-- 📦 VirtualBox  
-- 🛢️ MySQL  
-- 💻 VS Code   
-- 🔧 Git & GitHub  
 
 ---
 
