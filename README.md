@@ -14,15 +14,31 @@ This project demonstrates the deployment of a Java-based web application using *
 
 ## 📌 Features
 
-- User registration with email validation and password strength meter
-- Secure login with server-side session authentication
-- Café menu loaded dynamically from the database via `MenuServlet`
-- Cart system with atomic order transactions and rollback support
-- MariaDB integration with full `InnoDB` relational schema
+- User login
+- Registration
+- Café menu
+- Cart system
+- MariaDB integration
 
 ---
 
-## 🔐 Security
+## 🧰 Technologies Used
+
+- Java
+- Tomcat
+- MariaDB
+- Ubuntu Server
+
+## 🖥️ System Architecture
+
+### Frontend
+- HTML, CSS, JavaScript  
+
+### Backend
+- Java Servlets & JSP (deployed on Apache Tomcat)  
+
+### Database
+- MySQL   
 
 - Passwords hashed with SHA-256 and a random salt via `PasswordUtil.java` — never stored as plain text
 - All database queries use `PreparedStatement` — no SQL injection possible
@@ -33,16 +49,136 @@ This project demonstrates the deployment of a Java-based web application using *
 
 ---
 
-## 🧰 Technologies Used
+## 📂 Project Structure
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | HTML, CSS, JavaScript |
-| Backend | Java Servlets — `RegisterServlet`, `LoginServlet`, `MenuServlet`, `OrderServlet` |
-| Server | Apache Tomcat 10 |
-| Database | MariaDB / MySQL (`cafeDB`) |
-| JDBC Driver | `mariadb-java-client.jar` |
-| Environment | Ubuntu Server on VirtualBox VM |
+```
+java-bean-cafe/
+│── src/
+│── webapp/ or WebContent/
+│── WEB-INF/
+│   └── web.xml
+│── lib/
+│── css/
+│── js/
+│── images/
+│── database/
+│── README.md
+```
+
+---
+
+## 🧪 VM Setup & Deployment Guide (Ubuntu + Shared Folder)
+
+### 🖥️ Step 1: Install Virtual Machine
+
+1. Download and install VirtualBox  
+2. Download Ubuntu Server ISO (20.04 or 22.04 LTS recommended)
+
+---
+
+### 🐧 Step 2: Create Ubuntu Server VM
+
+1. Open VirtualBox → Click New  
+2. Name: Ubuntu Server  
+3. Type: Linux  
+4. Version: Ubuntu (64-bit)  
+5. RAM: at least 2GB  
+6. Storage: 20GB (VDI, dynamically allocated)  
+
+Then:
+
+- Go to Settings → Storage  
+- Attach Ubuntu ISO  
+
+Start the VM and install Ubuntu:
+
+- Choose Install Ubuntu Server  
+- Set username, password, hostname  
+- Install OpenSSH server  
+
+Reboot after installation.
+
+---
+
+### 🔧 Step 3: Update System
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+---
+
+## 🌐 Hosting the Website in Ubuntu (Shared Folder Method)
+
+### 📂 Step 4: Setup Shared Folder
+
+1. Power off VM  
+2. Go to Settings → Shared Folders  
+3. Add:
+   - Folder Path: your project folder  
+   - Folder Name: ver2.0  
+   - ✔ Auto-mount  
+   - ✔ Make Permanent  
+4. Start VM  
+
+---
+
+### 📁 Step 5: Access Shared Folder
+
+```bash
+cd /media
+ls
+```
+
+Expected output:
+
+```
+sf_ver2.0
+```
+
+---
+
+### ⚠️ If Permission is Denied
+
+```bash
+sudo usermod -aG vboxsf $USER
+sudo reboot
+```
+
+After reboot:
+
+```bash
+cd /media/sf_ver2.0
+ls
+```
+
+---
+
+### 📦 Step 6: Access Website Files
+
+```bash
+cd /media/sf_ver2.0
+ls
+```
+
+---
+
+### ▶️ Step 7: Run Website (Python Server)
+
+```bash
+python3 -m http.server 8000
+```
+
+---
+
+### 🌍 Step 8: Open in Browser
+
+Inside VM:
+
+```
+http://localhost:8000
+```
 
 ---
 
