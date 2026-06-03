@@ -128,5 +128,130 @@ cd Java-and-Bean_Website
 
 # ✅ Installation Complete
 
+# 🗄️ Database Setup Guide
+
+This guide explains how to configure the MariaDB database for the Java & Bean Café Website.
+
+---
+
+# ▶️ Step 1: Access MariaDB
+
+```bash
+mysql -u root -p
+```
+---
+
+# 🏗️ Step 2: Create Database
+
+```bash
+CREATE DATABASE cafeDB;
+USE cafeDB;
+```
+---
+
+# 👤 Step 3: Create Users Table
+
+```bash
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100),
+    email VARCHAR(100),
+    password VARCHAR(100)
+);
+```
+---
+
+# 🍽️ Step 4: Create Menu Table
+
+```bash
+CREATE TABLE menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100),
+    price DOUBLE
+);
+```
+
+---
+
+# 🧾 Step 5: Create Orders Table
+
+```bash
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total DOUBLE
+);
+```
+---
+
+# 📦 Step 6: Create Order Items Table
+
+```bash
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    menu_id INT,
+    quantity INT
+);
+```
+---
+
+# 🔗 Step 7: Configure Database Connection
+
+```bash
+Example DBConnection.java:
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+    public static Connection getConnection() {
+
+        Connection con = null;
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+
+            con = DriverManager.getConnection(
+                "jdbc:mariadb://localhost:3306/cafeDB",
+                "root",
+                "YOUR_PASSWORD"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return con;
+    }
+}
+```
+---
+
+# ⚙️ Step 8: Verify JDBC Driver
+
+```bash
+ls /usr/share/java/ | grep mariadb
+
+Expected output:
+
+text
+mariadb-java-client.jar
+```
+---
+
+# 🔄 Step 9: Restart Tomcat
+
+```bash
+sudo systemctl restart tomcat10
+```
+
+---
+
+# ✅ Database Configuration Complete
+
+
 
     
