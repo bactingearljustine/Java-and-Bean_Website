@@ -2,35 +2,62 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+           https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
-    <display-name>Cafe Web App</display-name>
+  <display-name>Java &amp; Bean Café</display-name>
 
-    <!-- =========================
-         REGISTER SERVLET
-    ========================== -->
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>RegisterServlet</servlet-class>
-    </servlet>
+  <!-- ═══════════════════════════ SERVLETS ═══════════════════════════ -->
 
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
 
-    <!-- =========================
-         LOGIN SERVLET
-    ========================== -->
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>LoginServlet</servlet-class>
-    </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
+  <servlet>
+    <servlet-name>MenuServlet</servlet-name>
+    <servlet-class>MenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MenuServlet</servlet-name>
+    <url-pattern>/MenuServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- ═══════════════════════ SESSION CONFIG ═════════════════════════ -->
+  <session-config>
+    <session-timeout>60</session-timeout>    <!-- 60 minutes -->
+    <cookie-config>
+      <http-only>true</http-only>
+      <!-- Enable secure below when running over HTTPS -->
+      <!-- <secure>true</secure> -->
+    </cookie-config>
+  </session-config>
+
+  <!-- ════════════════════════ WELCOME FILES ═════════════════════════ -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 
 </web-app>
