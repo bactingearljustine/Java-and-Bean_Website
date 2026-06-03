@@ -112,7 +112,7 @@ java-bean-cafe/
 ### 🌐 Application Running in Browser (Ubuntu)
 ![Running](images/vm_running.png)
 ### 🗄️ Sample Database Output
-![Cafe Database](images/database.png)
+![Cafe Database](images/databasee.png)
 
 ---
 
